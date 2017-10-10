@@ -1,7 +1,7 @@
 describe App do
 
   describe 'GET /' do
-    before do 
+    before do
       get '/'
     end
 
@@ -9,7 +9,7 @@ describe App do
       expect(last_response.status).to eq(200)
     end
 
-    it 'renders super hero form' do 
+    it 'renders super hero form' do
       expect(last_response.body).to include("Create a Team and Heroes!")
       expect(last_response.body).to include("<form")
     end
@@ -20,15 +20,15 @@ describe App do
       visit '/'
       fill_in("team[name]", :with => "Team Ruby")
       fill_in("team[motto]", :with => "We love Ruby!")
-      fill_in("member1_name", :with => "Amanda")
-      fill_in("member1_power", :with => "Ruby")
-      fill_in("member1_bio", :with => "I love Ruby!")
-      fill_in("member2_name", :with => "Arel")
-      fill_in("member2_power", :with => "JavaScript")
-      fill_in("member2_bio", :with => "I love JavaScript!")
-      fill_in("member3_name", :with => "Katie")
-      fill_in("member3_power", :with => "Sinatra")
-      fill_in("member3_bio", :with => "I love Sinatra!")
+      fill_in("member1[name]", :with => "Amanda")
+      fill_in("member1[power]", :with => "Ruby")
+      fill_in("member1[biography]", :with => "I love Ruby!")
+      fill_in("member2[name]", :with => "Arel")
+      fill_in("member2[power]", :with => "JavaScript")
+      fill_in("member2[biography]", :with => "I love JavaScript!")
+      fill_in("member3[name]", :with => "Katie")
+      fill_in("member3[power]", :with => "Sinatra")
+      fill_in("member3[biography]", :with => "I love Sinatra!")
       click_button 'submit'
 
       expect(page).to have_text("Team Ruby")
@@ -44,5 +44,5 @@ describe App do
       expect(page).to have_text("Hero Biography: I love Sinatra!")
     end
   end
-  
+
 end
